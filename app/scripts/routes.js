@@ -2,20 +2,17 @@
 
 'use strict';
 
-angular.module('f1App').config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
-    $locationProvider.html5Mode(true);
-
-    $routeProvider
-    .when("/", {
-        templateUrl: "view/champTable.html",
-        controller: "ChampController"
-    })
-    .when("/champTable", {
-        templateUrl: "view/champTable.html",
-        controller: "ChampController"
-    })
-    .otherwise({
-        redirectTo: '/champTable'   
-    });
+    //$locationProvider.html5Mode(true);
+	//$urlRouterProvider.when('/', '/home');
+    
+    $stateProvider
+        .state("driverList", {
+            url: '/champTable',
+            templateUrl: "view/champTable.html",
+            controller: "DriverListController"
+        });
+                                
+    $urlRouterProvider.otherwise('/champTable');
 }]);
