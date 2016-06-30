@@ -4,5 +4,6 @@
 angular.module('f1App', [
     'ngRoute',
     'ui.router',
+    'ui.bootstrap',
     'app.controllers'
 ]);

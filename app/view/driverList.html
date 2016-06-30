@@ -1,17 +1,19 @@
-<table>
-    <thead>
-        <tr>
-            <th colspan="4">Drivers Championship Standings</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="driver in driversList.StandingsTable.StandingsLists[0].DriverStandings">
-            <td>{{$index + 1}}</td>
-            <td>
-                <img src="img/flags/{{driver.Driver.nationality}}.png" /> {{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
-            </td>
-            <td>{{driver.Constructors[0].name}}</td>
-            <td>{{driver.points}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="4">Drivers Championship Standings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="driver in driverList">
+                <td>{{$index + 1}}</td>
+                <td>
+                    <img ng-src="img/flags/{{driver.Driver.nationality}}.png" /> {{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
+                </td>
+                <td>{{driver.Constructors[0].name}}</td>
+                <td>{{driver.points}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

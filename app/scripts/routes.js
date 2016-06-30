@@ -9,10 +9,10 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
     
     $stateProvider
         .state("driverList", {
-            url: '/champTable',
-            templateUrl: "view/champTable.html",
+            url: '/driverList',
+            templateUrl: "view/driverList.html",
             controller: "DriverListController"
         });
                                 
-    $urlRouterProvider.otherwise('/champTable');
+    $urlRouterProvider.otherwise('/driverList');
 }]);
