@@ -1,5 +1,5 @@
 <div class="container">
-	<table class="table">
+    <!--<table class="table">
 		<thead>
 			<tr>
 				<th colspan="4">Latest Results</th>
@@ -27,5 +27,45 @@
                 <td>{{result.points}}</td>
 			</tr>
 		</tbody>
-	</table>
+	</table>-->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="module">
+                <div class="row text-center">
+                    <h3>Latest Results</h3>
+                </div>
+                <div class="row">
+                    <div class="table-responsive body-font">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Driver Name</th>
+                                    <th>Constructor</th>
+                                    <th>Laps</th>
+                                    <th>Grid</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="result in resultDetails">
+                                    <td>{{result.position}}</td>
+                                    <td>{{result.Driver.givenName}}&nbsp;{{result.Driver.familyName}}</td>
+                                    <td>{{result.Constructor.name}}</td>
+                                    <td>{{result.laps}}</td>
+                                    <td>{{result.grid}}</td>
+                                    <td>{{result.Time.time}}</td>
+                                    <td>{{result.status}}</td>
+                                    <td>{{result.points}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

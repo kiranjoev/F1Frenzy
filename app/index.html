@@ -11,17 +11,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>F1 Formula App</title>
 	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-	<link rel="stylesheet" href="app.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">   
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Vollkorn:700">
+    <link rel="stylesheet" href="stylesheets/app.css">
+    <link rel="stylesheet" href="stylesheets/developer.css">
     <base href="/">    
 </head>
 
 <body ng-app="f1App">
-	<div ng-include="'view/header.html'"></div>
-	<div ui-view></div>
+    <div ng-include="'view/header.html'"></div>
+    <div ui-view></div>
 	<div>Angular seed app: v<span app-version></span></div>
 
     <!--[if lt IE 7]>
@@ -32,10 +32,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
     <!--Adding dependency-->
-	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     
     <!--Adding application dependencies-->
 	<script src="scripts/controllers/mainController.js"></script>
@@ -44,6 +44,7 @@
     <script src="scripts/controllers/circuitController.js"></script>
     <script src="scripts/controllers/scheduleController.js"></script>
     <script src="scripts/controllers/resultController.js"></script>
+    <script src="scripts/controllers/homePageController.js"></script>
     <script src="scripts/controllers/navController.js"></script>
     
     <script src="scripts/services/mainService.js"></script>
@@ -52,9 +53,13 @@
     <script src="scripts/services/circuitService.js"></script>
     <script src="scripts/services/scheduleService.js"></script>
     <script src="scripts/services/resultService.js"></script>
+    <script src="scripts/services/newsService.js"></script>
+    
+    <script src="scripts/constants/ConstantsFile.js"></script>
     
     <script src="scripts/app.js"></script>
     <script src="scripts/routes.js"></script>
+    <script src="scripts/config.js"></script>
     
 </body>
 

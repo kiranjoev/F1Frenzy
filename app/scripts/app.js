@@ -3,8 +3,9 @@
 // Declare app level module which depends on views, and components
 angular.module('f1App', [
     'ngRoute',
+    'ngSanitize',
     'ui.router',
-    'ui.bootstrap',
     'app.controllers',
-    'app.services'
+    'app.services',
+    'app.constants'
 ]);

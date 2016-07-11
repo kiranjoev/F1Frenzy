@@ -1,0 +1,89 @@
+<main>
+    <!--Hero Image-->
+    <section class="jumbotron hero-unit">
+        <div class="container">
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra 7 attention to featured content or information.</p>
+        </div>
+    </section>
+    <!--NEWS-->
+    <section>
+        <div class="container">
+            <div class="row text-center">
+                <h1>Latest News</h1></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="card in newsCards">
+                    <div class="card">
+                        <div class="row"><h4>{{card.title}}</h4></div>
+                        <div class="row"><p>{{card.content}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Standings-->
+    <section>
+        <div class="container">
+            <div class="row text-center">
+                <h1>Standings</h1></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="module">
+                        <div class="row text-center">
+                            <h3>Driver Standings</h3>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive body-font">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>Driver Name</th>
+                                            <th>Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="driver in driverList.DriverStandings">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}</td>
+                                            <td>{{driver.points}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row text-center"><a href="#">See Full Driver Standings</a></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="module">
+                        <div class="row text-center">
+                            <h3>Constructor Standings</h3></div>
+                        <div class="row">
+                            <div class="table-responsive body-font">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>Constructor</th>
+                                            <th>Points</th>
+                                            <th>Wins</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="constructor in constructorList">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{constructor.Constructor.name}}</td>
+                                            <td>{{constructor.points}}</td>
+                                            <td>{{constructor.wins}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row text-center"><a href="#">See Full Constructor Standings</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

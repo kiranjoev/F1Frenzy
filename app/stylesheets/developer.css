@@ -1,0 +1,80 @@
+body {
+    background: black;
+    margin: 0px 0px;
+}
+
+a {
+    color: #d31411;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.head-font, h1,h2,h3,h4, a {
+    font-family: 'Vollkorn', serif;
+    color: red;
+}
+
+.body-font, p {
+    font-family: 'Lato', sans-serif;
+}
+
+.module {
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 15px 15px 30px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navbar-inverse {
+    background: black;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background: red;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background: red;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a,
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #303F9F;
+    color: #eeeeee;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a:hover {
+    color: #000000;
+}
+
+.hero-unit {
+    background-image: url('/img/5612166144_9e0996ba74_o.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    color: #fff;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    vertical-align: text-bottom;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    height: 250px;
+    transition: height 0.33s ease-out;
+    background-color: white;
+    padding: 30px;
+}

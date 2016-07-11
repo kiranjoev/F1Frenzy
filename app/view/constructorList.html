@@ -1,25 +1,33 @@
 <div class="container">
-	<table class="table">
-		<thead>
-			<tr>
-				<th colspan="4">Constructor Standings</th>
-			</tr>
-            <tr>
-                <th>No</th>
-                <th>Constructor Name</th>
-                <th>Points</th>
-                <th>Wins</th>
-            </tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="constructor in constructorList">
-				<td>{{$index + 1}}</td>
-				<td>
-					<img ng-src="img/flags/{{constructor.Constructor.nationality}}.png" /> {{constructor.Constructor.name}}
-				</td>
-				<td>{{constructor.points}}</td>
-                <td>{{constructor.wins}}</td>
-			</tr>
-		</tbody>
-	</table>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="module">
+                <div class="row text-center">
+                    <h3>Constructor Standings</h3>
+                </div>
+                <div class="row">
+                    <div class="table-responsive body-font">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Constructor Name</th>
+                                    <th>Points</th>
+                                    <th>Wins</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="constructor in constructorList">
+                                    <td>{{$index + 1}}</td>
+                                    <td><img ng-src="img/flags/{{constructor.Constructor.nationality}}.png" /> {{constructor.Constructor.name}}</td>
+                                    <td>{{constructor.points}}</td>
+                                    <td>{{constructor.wins}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

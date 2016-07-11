@@ -1,23 +1,33 @@
 <div class="container">
-	<table class="table">
-		<thead>
-			<tr>
-				<th colspan="4">Circuits used in current season</th>
-			</tr>
-            <tr>
-                <th>No</th>
-                <th>Circuit Name</th>
-                <th>Location</th>
-            </tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="circuit in circuitList">
-				<td>{{$index + 1}}</td>
-				<td>
-					<img ng-src="img/flags/{{circuit.Location.country}}.png" /> {{circuit.circuitName}}
-				</td>
-				<td>{{circuit.Location.locality}},&nbsp;{{circuit.Location.country}}</td>
-			</tr>
-		</tbody>
-	</table>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="module">
+                <div class="row text-center">
+                    <h3>Circuits used in current season</h3>
+                </div>
+                <div class="row">
+                    <div class="table-responsive body-font">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Circuit Name</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="circuit in circuitList">
+                                    <td>{{$index + 1}}</td>
+                                    <td>
+                                        <img ng-src="img/flags/{{circuit.Location.country}}.png" /> {{circuit.circuitName}}
+                                    </td>
+                                    <td>{{circuit.Location.locality}},&nbsp;{{circuit.Location.country}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

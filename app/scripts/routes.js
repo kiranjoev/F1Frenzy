@@ -32,7 +32,12 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
             url: '/results',
             templateUrl: "view/resultDetails.html",
             controller: "ResultController"
+        })
+        .state("home", {
+            url: '/home',
+            templateUrl: "view/homePage.html",
+            controller: "HomePageController"
         });
                                 
-    $urlRouterProvider.otherwise('/driverList');
+    $urlRouterProvider.otherwise('/home');
 }]);
