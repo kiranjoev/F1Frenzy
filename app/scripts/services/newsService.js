@@ -5,7 +5,7 @@ angular.module('app.services').factory('NewsService', ['$http', function ($http)
     news.getESPNNews = function () {
         return $http({
             method: 'JSONP',
-            url: config.googleApi + config.autoSportFeed + '&callback=JSON_CALLBACK&num=6'
+            url: config.googleApi + config.bbcFeed + '&callback=JSON_CALLBACK&num=6'
         });
     }
 
