@@ -4,6 +4,7 @@
 angular.module('f1App', [
     'ngRoute',
     'ngSanitize',
+    'ui.bootstrap',
     'ui.router',
     'app.controllers',
     'app.services',

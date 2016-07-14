@@ -4,15 +4,29 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
 
     $scope.loadLatestNews = function () {
 
-        NewsService.getESPNNews().then(function (response) {
+        /*NewsService.getESPNNews().then(function (response) {
             console.log(response);
             $scope.newsCards = response.data.responseData.feed.entries;
         }, function (error) {
             console.log(error);
-        });
+        });*/
+        
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+                if (xhr.readyState==4 && xhr.status==200)
+                {
+                    var data = JSON.parse(xhr.responseText);
+                    if(data.status == 'ok'){
+                        console.log(data);
+                        $scope.newsCards = data.items.slice(1,7);
+                        $scope.$apply();
+                    }
+                }
+            };
+        xhr.open('GET','http://rss2json.com/api.json?rss_url=http://feeds.bbci.co.uk/sport/formula1/rss.xml',true);
+        xhr.send();
     }
-    $scope.loadLatestNews();
-
+   
     $scope.loadLimitedDriverStandings = function () {
         DriverService.getLimitedCurrentDriverStandings().then(function (response) {
             console.log(response);
@@ -21,8 +35,7 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
             console.log(error);
         });
     }
-    $scope.loadLimitedDriverStandings();
-
+    
     $scope.loadLimitedConstructorDetails = function () {
         ConstructorService.getLimitedCurrentConstructorDetails().then(function (response) {
             console.log(response);
@@ -31,6 +44,10 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
             console.log(error);
         });
     }
+    
+    
+    $scope.loadLatestNews();
+    $scope.loadLimitedDriverStandings();
     $scope.loadLimitedConstructorDetails();
 
     /* $scope.seasonList = APP_CONSTANTS.season;
@@ -46,4 +63,4 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
          });
      }*/
 
-            }]);
+}]);
