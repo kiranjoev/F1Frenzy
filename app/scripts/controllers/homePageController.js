@@ -18,6 +18,7 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
                     var data = JSON.parse(xhr.responseText);
                     if(data.status == 'ok'){
                         console.log(data);
+                        $scope.newsSource = data.feed;
                         $scope.newsCards = data.items.slice(1,7);
                         $scope.$apply();
                     }

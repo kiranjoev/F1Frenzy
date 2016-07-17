@@ -6,7 +6,7 @@
             <div class="row text-center">
                 <div class="col-xs-12 col-lg-offset-1 col-lg-10">
                     <h1>EXPLORE</h1>
-                    <p>THE LATEST F1 DATA..</p>
+                    <h4>THE LATEST F1 DATA..</h4>
                 </div>
             </div>
         </div>
@@ -16,11 +16,26 @@
         <div class="container">
             <div class="row text-center">
                 <h1>NEWS</h1></div>
+            <div class="row"><hr class="divider"></div>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="card in newsCards">
-                    <div class="card" ng-style="{'background-image': 'url(' + card.thumbnail + ')'}">
-                        <div class="row"><h4>{{card.title}}</h4></div>
-                        <div class="row"><p>{{card.content}}</p></div>
+                <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="news in newsCards">
+                    <!--ng-style="{'background-image': 'url(' + news.thumbnail + ')'}"-->
+                    <div class="card" ng-style="{'background-image': 'url(' + news.thumbnail + ')'}">
+                        <div class="headline">
+                            <div class="headline-wrap">
+                                <p>{{news.pubDate}}</p>
+                                <span>
+                                    <img ng-src="{{newsSource.image}}" height="40" width="50">
+                                    <h5 style="display:inline">{{news.title}}</h5>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="content-wrap">
+                                <p>{{news.content}}</p>
+                                <button class="btn btn-primary">Read More</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,6 +46,7 @@
         <div class="container">
             <div class="row text-center">
                 <h1>STANDINGS</h1></div>
+            <div class="row"><hr class="divider"></div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="well">
