@@ -16,24 +16,22 @@
         <div class="container">
             <div class="row text-center">
                 <h1>NEWS</h1></div>
-            <div class="row"><hr class="divider"></div>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="news in newsCards">
-                    <!--ng-style="{'background-image': 'url(' + news.thumbnail + ')'}"-->
-                    <div class="card" ng-style="{'background-image': 'url(' + news.thumbnail + ')'}">
-                        <div class="headline">
-                            <div class="headline-wrap">
-                                <p>{{news.pubDate}}</p>
-                                <span>
-                                    <img ng-src="{{newsSource.image}}" height="40" width="50">
-                                    <h5 style="display:inline">{{news.title}}</h5>
-                                </span>
-                            </div>
-                        </div>
+                <hr class="divider">
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="news in newsCards">
+                    <div class="card">
                         <div class="content">
+                            <img ng-src="{{news.thumbnail}}">
                             <div class="content-wrap">
+                                <p>{{news.pubDate}}</p>
+                                <img ng-src="{{newsSource.image}}" height="40" width="50">
+                                <h5 style="display:inline">{{news.title}}</h5>
                                 <p>{{news.content}}</p>
-                                <button class="btn btn-primary">Read More</button>
+                            </div>
+                            <div class="row text-center">
+                                <a ng-href="{{news.link}}" target="_blank">Read More >></a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +44,9 @@
         <div class="container">
             <div class="row text-center">
                 <h1>STANDINGS</h1></div>
-            <div class="row"><hr class="divider"></div>
+            <div class="row">
+                <hr class="divider">
+            </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="well">
