@@ -37,8 +37,8 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
         });
     }
     
-    $scope.loadLimitedConstructorDetails = function () {
-        ConstructorService.getLimitedCurrentConstructorDetails().then(function (response) {
+    $scope.loadLimitedConstructorStandings = function () {
+        ConstructorService.getLimitedCurrentConstructorStandings().then(function (response) {
             console.log(response);
             $scope.constructorList = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
         }, function (error) {
@@ -49,7 +49,7 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
     
     $scope.loadLatestNews();
     $scope.loadLimitedDriverStandings();
-    $scope.loadLimitedConstructorDetails();
+    $scope.loadLimitedConstructorStandings();
 
     /* $scope.seasonList = APP_CONSTANTS.season;
      $scope.selectedSeason = $scope.seasonList[0];

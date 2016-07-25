@@ -1,20 +1,39 @@
 angular.module('app.services').factory('ConstructorService', ['$http', function ($http) {
 
     var constructorDetails = {};
+    
+    constructorDetails.getConstructorList = function (season) {
+        return $http({
+            method: 'JSONP',
+            url: 'http://ergast.com/api/f1/' + season + '/constructors.json?callback=JSON_CALLBACK'
+        });
+    }
 
-    constructorDetails.getConstructorDetails = function () {
-
+    constructorDetails.getCurrentConstructorStandings = function () {
         return $http({
             method: 'JSONP',
             url: 'http://ergast.com/api/f1/current/constructorStandings.json?callback=JSON_CALLBACK'
         });
-
     }
 
-    constructorDetails.getLimitedCurrentConstructorDetails = function () {
+    constructorDetails.getLimitedCurrentConstructorStandings = function () {
         return $http({
             method: 'JSONP',
             url: 'http://ergast.com/api/f1/current/constructorStandings.json?limit=10&callback=JSON_CALLBACK'
+        });
+    }
+    
+    constructorDetails.getConstructorSeasonStandings = function (season) {
+        return $http({
+            method: 'JSONP',
+            url: 'http://ergast.com/api/f1/' + season + '/constructorStandings.json?callback=JSON_CALLBACK'
+        });
+    }
+    
+    constructorDetails.getSpecificConstructorResult = function (season ,constructor) {
+        return $http({
+            method: 'JSONP',
+            url: 'http://ergast.com/api/f1/' + season + '/constructors/' + constructor + '/results.json?callback=JSON_CALLBACK'
         });
     }
 

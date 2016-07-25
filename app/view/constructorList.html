@@ -1,28 +1,81 @@
 <div ng-include="'view/header.html'"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="well">
-                <div class="row text-center">
-                    <h3>Constructor Standings</h3>
+<section class="segment">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Constructor Standings</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div uib-dropdown class="dropdown dropDownWrapper">
+                    <div uib-dropdown-toggle>
+                        <div class="dropDownValue">
+                            {{selectedSeason}}
+                        </div>
+                        <span ng-hide="{{isOpen}}" class="glyphicon glyphicon-chevron-down" style="float:right"></span>
+                        <span ng-show="{{isOpen}}" class="glyphicon glyphicon-chevron-up"></span>
+                    </div>
+                    <ul class="dropdownList" uib-dropdown-menu>
+                        <li ng-repeat="season in seasonList" ng-click="changeSeason(season.season)">{{season.season}}</li>
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="table-responsive body-font">
+            </div>
+            <div class="col-md-4">
+                <div uib-dropdown class="dropdown dropDownWrapper">
+                    <div uib-dropdown-toggle>
+                        <div class="dropDownValue">
+                            {{selectedConstructor.name}}
+                        </div>
+                        <span ng-hide="{{isOpen}}" class="glyphicon glyphicon-chevron-down" style="float:right"></span>
+                        <span ng-show="{{isOpen}}" class="glyphicon glyphicon-chevron-up"></span>
+                    </div>
+                    <ul class="dropdownList" uib-dropdown-menu>
+                        <li ng-repeat="car in constructorList" ng-click="changeConstructor(car)">{{car.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 pull-right">
+                <button type="button" class="button button-primary" ng-click="updateFilter()">Update Filter</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="well">
+                    <div class="row" ng-show="displayConstructorStandings">
+                        <div class="table-responsive body-font">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Constructor Name</th>
+                                        <th>Points</th>
+                                        <th>Wins</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="car in constructorStandings">
+                                        <td>{{$index + 1}}</td>
+                                        <td><img ng-src="img/flags/{{car.Constructor.nationality}}.png" /> {{car.Constructor.name}}</td>
+                                        <td>{{car.points}}</td>
+                                        <td>{{car.wins}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="displayConstructorStandings">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Position</th>
-                                    <th>Constructor Name</th>
+                                    <th>Race Name</th>
+                                    <th>Constructor</th>
                                     <th>Points</th>
-                                    <th>Wins</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="constructor in constructorList">
-                                    <td>{{$index + 1}}</td>
-                                    <td><img ng-src="img/flags/{{constructor.Constructor.nationality}}.png" /> {{constructor.Constructor.name}}</td>
-                                    <td>{{constructor.points}}</td>
-                                    <td>{{constructor.wins}}</td>
+                                <tr ng-repeat="car in constructorResults">
+                                    <td>{{car.raceName}}</td>
+                                    <td><img ng-src="img/flags/{{car.Results[0].Constructor.nationality}}.png" /> {{car.Results[0].Constructor.name}}</td>
+                                    <td>{{car.points}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -31,4 +84,4 @@
             </div>
         </div>
     </div>
-</div>
+</section>
