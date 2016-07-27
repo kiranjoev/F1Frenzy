@@ -29,7 +29,7 @@ angular.module('app.controllers').controller('HomePageController', ['$scope', 'D
     }
    
     $scope.loadLimitedDriverStandings = function () {
-        DriverService.getLimitedCurrentDriverStandings().then(function (response) {
+        DriverService.getLimitedDriverStandings('current').then(function (response) {
             console.log(response);
             $scope.driverList = response.data.MRData.StandingsTable.StandingsLists[0];
         }, function (error) {

@@ -9,10 +9,10 @@ angular.module('app.services').factory('ConstructorService', ['$http', function 
         });
     }
 
-    constructorDetails.getCurrentConstructorStandings = function () {
+    constructorDetails.getConstructorStandings = function (season) {
         return $http({
             method: 'JSONP',
-            url: 'http://ergast.com/api/f1/current/constructorStandings.json?callback=JSON_CALLBACK'
+            url: 'http://ergast.com/api/f1/' + season + '/constructorStandings.json?callback=JSON_CALLBACK'
         });
     }
 
@@ -20,13 +20,6 @@ angular.module('app.services').factory('ConstructorService', ['$http', function 
         return $http({
             method: 'JSONP',
             url: 'http://ergast.com/api/f1/current/constructorStandings.json?limit=10&callback=JSON_CALLBACK'
-        });
-    }
-    
-    constructorDetails.getConstructorSeasonStandings = function (season) {
-        return $http({
-            method: 'JSONP',
-            url: 'http://ergast.com/api/f1/' + season + '/constructorStandings.json?callback=JSON_CALLBACK'
         });
     }
     

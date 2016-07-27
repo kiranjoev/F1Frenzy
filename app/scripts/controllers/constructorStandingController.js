@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('app.controllers').controller('ConstructorController', ['$scope', 'SeasonService', 'ConstructorService', function ($scope, SeasonService, ConstructorService) {
+angular.module('app.controllers').controller('ConstructorStandingController', ['$scope', 'SeasonService', 'ConstructorService', function ($scope, SeasonService, ConstructorService) {
 
     $scope.displayConstructorStandings = true;
 
     $scope.loadConstructorStandings = function () {
-        ConstructorService.getCurrentConstructorStandings().then(function (response) {
+        ConstructorService.getConstructorStandings('current').then(function (response) {
             console.log(response);
             $scope.constructorStandings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
             $scope.selectedSeason = response.data.MRData.StandingsTable.season;
@@ -52,7 +52,7 @@ angular.module('app.controllers').controller('ConstructorController', ['$scope',
         var constructorSampleList = [];
         console.log($scope.selectedConstructor);
         if ($scope.selectedConstructor.name == 'All') {
-            ConstructorService.getConstructorSeasonStandings($scope.selectedSeason).then(function (response) {
+            ConstructorService.getConstructorStandings($scope.selectedSeason).then(function (response) {
                 console.log(response);
                 $scope.constructorStandings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
             }, function (error) {
