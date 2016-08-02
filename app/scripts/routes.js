@@ -13,7 +13,7 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
             templateUrl: "view/homePage.html",
             controller: "HomePageController"
         })
-    
+
         .state("driverList", {
             url: '/driverList',
             templateUrl: "view/driverList.html",
@@ -24,7 +24,7 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
             templateUrl: "view/driverInfo.html",
             controller: "DriverInfoController"
         })
-    
+
         .state("constructorList", {
             url: '/constructorList',
             templateUrl: "view/constructorList.html",
@@ -35,40 +35,50 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
             templateUrl: "view/constructorInfo.html",
             controller: "ConstructorInfoController"
         })
-    
+
         .state("seasonStanding", {
             url: '/seasonStanding',
             templateUrl: "view/seasonStanding.html",
             controller: "SeasonStandingController"
         })
-        .state("driverStanding", {
-            url: '/driverStanding',
-            templateUrl: "view/driverStanding.html",
-            controller: "DriverStandingController"
+        .state("seasonStanding.raceDetails", {
+            templateUrl: "view/raceDetails.html"
         })
-        .state("constructorStanding", {
-            url: '/constructorStanding',
-            templateUrl: "view/constructorStanding.html",
-            controller: "ConstructorStandingController"
+        .state("seasonStanding.pitDetails", {
+            templateUrl: "view/pitDetails.html"
         })
-    
-        .state("circuitList", {
-            url: '/circuitList',
-            templateUrl: "view/circuitList.html",
-            controller: "CircuitController"
+        .state("seasonStanding.qualifyDetails", {
+            templateUrl: "view/qualifyDetails.html"
         })
-    
-        .state("scheduleDetails", {
-            url: '/schedule',
-            templateUrl: "view/scheduleDetails.html",
-            controller: "ScheduleController"
-        })
-    
-        .state("resultDetails", {
-            url: '/results',
-            templateUrl: "view/resultDetails.html",
-            controller: "ResultController"
-        });
+
+    .state("driverStanding", {
+        url: '/driverStanding',
+        templateUrl: "view/driverStanding.html",
+        controller: "DriverStandingController"
+    })
+    .state("constructorStanding", {
+        url: '/constructorStanding',
+        templateUrl: "view/constructorStanding.html",
+        controller: "ConstructorStandingController"
+    })
+
+    .state("circuitList", {
+        url: '/circuitList',
+        templateUrl: "view/circuitList.html",
+        controller: "CircuitController"
+    })
+
+    .state("scheduleDetails", {
+        url: '/schedule',
+        templateUrl: "view/scheduleDetails.html",
+        controller: "ScheduleController"
+    })
+
+    .state("resultDetails", {
+        url: '/results',
+        templateUrl: "view/resultDetails.html",
+        controller: "ResultController"
+    });
 
     $urlRouterProvider.otherwise('/home');
 }]);

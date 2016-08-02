@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="table-responsive body-font">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Stops</th>
+                    <th>Driver</th>
+                    <th>Lap</th>
+                    <th>Time of Day</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pitstop in pitstopDetails">
+                    <td>{{pitstop.stop}}</td>
+                    <td>{{pitstop.driverId}}</td>
+                    <td>{{pitstop.lap}}</td>
+                    <td>{{pitstop.time}}</td>
+                    <td>{{pitstop.duration}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

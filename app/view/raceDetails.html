@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="table-responsive body-font">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>No</th>
+                    <th>Driver</th>
+                    <th>Car</th>
+                    <th>Laps</th>
+                    <th>Grid</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="race in raceDetails">
+                    <td>{{race.position}}</td>
+                    <td>{{race.number}}</td>
+                    <td>{{race.Driver.givenName}}&nbsp;{{race.Driver.familyName}}</td>
+                    <td>{{race.Constructor.name}}</td>
+                    <td>{{race.laps}}</td>
+                    <td>{{race.grid}}</td>
+                    <td>{{race.Time.time}}</td>
+                    <td>{{race.status}}</td>
+                    <td>{{race.points}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

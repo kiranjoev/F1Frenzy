@@ -1,0 +1,20 @@
+<div ng-include="'view/header.html'"></div>
+<section class="segment">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Season Standings</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
+                <ul>
+                    <li ng-if="displayRaceDetails"><a ui-sref="seasonStanding.raceDetails">Race Details</a></li>
+                    <li ng-if="displayPitDetails"><a ui-sref="seasonStanding.pitDetails">Pit Stop Summary</a></li>
+                    <li ng-if="displayQualifyingDetails"><a ui-sref="seasonStanding.qualifyDetails">Qualifying</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</section>

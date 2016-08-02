@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="table-responsive body-font">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>No</th>
+                    <th>Driver</th>
+                    <th>Car</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="qualify in qualifyDetails">
+                    <td>{{qualify.position}}</td>
+                    <td>{{qualify.number}}</td>
+                    <td>{{qualify.Driver.givenName}}&nbsp;{{qualify.Driver.familyName}}</td>
+                    <td>{{qualify.Constructor.name}}</td>
+                    <td>{{qualify.Q1}}</td>
+                    <td>{{qualify.Q2}}</td>
+                    <td>{{qualify.Q3}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
