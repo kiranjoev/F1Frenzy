@@ -15,7 +15,18 @@
                 <li ui-sref-active="active"><a ui-sref="constructorList">Constructors</a></li>
                 <li ui-sref-active="active"><a ui-sref="circuitList">Circuits</a></li>
                 <li ui-sref-active="active"><a ui-sref="scheduleDetails">Schedule</a></li>
-                <li ui-sref-active="active"><a ui-sref="resultDetails">Results</a></li>
+                <li ui-sref-active="active" uib-dropdown on-toggle="isOpen = !isOpen">
+                    <a uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+                        Results
+                        <span ng-hide="isOpen" class="glyphicon glyphicon-chevron-down"></span>
+                        <span ng-show="isOpen" class="glyphicon glyphicon-chevron-up"></span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+                        <li><a ui-sref="seasonStanding">Season Standing</a></li>
+                        <li><a ui-sref="driverStanding">Driver Standing</a></li>
+                        <li><a ui-sref="constructorStanding">Constructor Standing</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
