@@ -1,43 +1,67 @@
 'use strict';
 
-angular.module('app.controllers').controller('SeasonStandingController', ['$scope', 'SeasonService','$state', function ($scope, SeasonService,$state) {
+angular.module('app.controllers').controller('SeasonStandingController', ['$scope', 'SeasonService', 'ScheduleService','$state', function ($scope, SeasonService, ScheduleService, $state) {
 
-    $scope.selectedSeason = '2016';
-    $scope.selectedRace = '1';
-    $scope.raceDetails = [];
-    $scope.displayRaceDetails = false;
-    $scope.displayPitDetails = false;
-    $scope.displayQualifyingDetails = false;
-    
-    $scope.loadRaceDetails = function () {
-        SeasonService.getRaceDetails($scope.selectedSeason,$scope.selectedRace).then(function (response) {
-            console.log(response);         
-            $scope.displayRaceDetails = true;
-            $scope.raceDetails = response.data.MRData.RaceTable.Races[0].Results;
+    $scope.displayRaceDetails = true;
+    $scope.displayPitDetails = true;
+    $scope.displayQualifyingDetails = true;
+    $scope.isSeasonOpen = false;
+    $scope.isRaceOpen = false;
+    $scope.common = {};
+    $scope.common.displayLoading = false;
+
+    $scope.changeSeason = function (selectedSeason) {
+        if (Math.floor(selectedSeason) < 2003) {
+            $scope.displayPitDetails = false;
+            $scope.displayQualifyingDetails = false;
+        } else if (Math.floor(selectedSeason) < 2012) {
+            $scope.displayPitDetails = false;
+        }
+        $scope.common.selectedSeason = selectedSeason;
+        $scope.loadRaceList();
+    }
+
+    $scope.changeRace = function (selectedRace) {
+        $scope.common.selectedRace = selectedRace;
+    }
+
+    $scope.loadSeasonList = function () {
+        $scope.common.displayLoading = true;
+        SeasonService.getSeasonDetails().then(function (response) {
+            console.log(response);
+            $scope.seasonList = response.data.MRData.SeasonTable.Seasons;
+            $scope.seasonList.reverse();
+            $scope.common.selectedSeason = $scope.seasonList[0];
+            $scope.loadRaceList();
         }, function (error) {
             console.log(error);
+            $scope.common.displayLoading = false;
         });
     }
-    $scope.loadPitDetails = function () {
-        SeasonService.getPitDetails($scope.selectedSeason,$scope.selectedRace).then(function (response) {
-            console.log(response);   
-            $scope.displayPitDetails = true;
-            $scope.pitstopDetails = response.data.MRData.RaceTable.Races[0].PitStops;
+    $scope.loadSeasonList();
+
+    $scope.loadRaceList = function () {
+        var sampleRaceList = [];
+        $scope.common.displayLoading = true;
+        ScheduleService.getScheduleDetails($scope.common.selectedSeason.season).then(function (response) {
+            console.log(response);
+            for (var index in response.data.MRData.RaceTable.Races) {
+                sampleRaceList.push({
+                    name: response.data.MRData.RaceTable.Races[index].raceName,
+                    round: response.data.MRData.RaceTable.Races[index].round
+                });
+            }
+            $scope.raceList = sampleRaceList;
+            $scope.common.selectedRace = $scope.raceList[0];
+            $scope.common.displayLoading = false;
         }, function (error) {
             console.log(error);
+            $scope.common.displayLoading = false;
         });
     }
-    $scope.loadQualifyingDetails = function () {
-        SeasonService.getQualifyingDetails($scope.selectedSeason,$scope.selectedRace).then(function (response) {
-            console.log(response);  
-            $scope.displayQualifyingDetails = true;
-            $scope.qualifyDetails = response.data.MRData.RaceTable.Races[0].QualifyingResults;
-        }, function (error) {
-            console.log(error);
-        });
+
+    $scope.updateFilter = function () {
+        $state.go('seasonStanding.raceDetails');
     }
-    $scope.loadRaceDetails();
-    $scope.loadPitDetails();
-    $scope.loadQualifyingDetails();
 
 }]);

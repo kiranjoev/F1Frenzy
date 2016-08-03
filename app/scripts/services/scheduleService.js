@@ -4,10 +4,10 @@ angular.module('app.services').factory('ScheduleService', ['$http', function ($h
 
     var scheduleDetails = {};
 
-    scheduleDetails.getScheduleDetails = function () {
+    scheduleDetails.getScheduleDetails = function (season) {
         return $http({
             method: 'JSONP',
-            url: 'http://ergast.com/api/f1/current.json?callback=JSON_CALLBACK'
+            url: 'http://ergast.com/api/f1/' + season + '.json?callback=JSON_CALLBACK'
         });
     }
 

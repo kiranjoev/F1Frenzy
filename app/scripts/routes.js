@@ -8,47 +8,53 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
     //$urlRouterProvider.when('/', '/home');
 
     $stateProvider
+
         .state("home", {
-            url: '/home',
-            templateUrl: "view/homePage.html",
-            controller: "HomePageController"
-        })
+        url: '/home',
+        templateUrl: "view/homePage.html",
+        controller: "HomePageController"
+    })
 
-        .state("driverList", {
-            url: '/driverList',
-            templateUrl: "view/driverList.html",
-            controller: "DriverListController"
-        })
-        .state("driverInfo", {
-            url: ':driverId/driverInfo',
-            templateUrl: "view/driverInfo.html",
-            controller: "DriverInfoController"
-        })
+    .state("driverList", {
+        url: '/driverList',
+        templateUrl: "view/driverList.html",
+        controller: "DriverListController"
+    })
 
-        .state("constructorList", {
-            url: '/constructorList',
-            templateUrl: "view/constructorList.html",
-            controller: "ConstructorListController"
-        })
-        .state("constructorInfo", {
-            url: ':constructorId/constructorInfo',
-            templateUrl: "view/constructorInfo.html",
-            controller: "ConstructorInfoController"
-        })
+    .state("driverInfo", {
+        url: ':driverId/driverInfo',
+        templateUrl: "view/driverInfo.html",
+        controller: "DriverInfoController"
+    })
 
-        .state("seasonStanding", {
-            url: '/seasonStanding',
+    .state("constructorList", {
+        url: '/constructorList',
+        templateUrl: "view/constructorList.html",
+        controller: "ConstructorListController"
+    })
+
+    .state("constructorInfo", {
+        url: ':constructorId/constructorInfo',
+        templateUrl: "view/constructorInfo.html",
+        controller: "ConstructorInfoController"
+    })
+
+    .state("seasonStanding", {
+            url: "/seasonStanding",
             templateUrl: "view/seasonStanding.html",
             controller: "SeasonStandingController"
         })
         .state("seasonStanding.raceDetails", {
-            templateUrl: "view/raceDetails.html"
+            templateUrl: "view/raceDetails.html",
+            controller: "RaceDetailsController"
         })
         .state("seasonStanding.pitDetails", {
-            templateUrl: "view/pitDetails.html"
+            templateUrl: "view/pitDetails.html",
+            controller: "PitDetailsController"
         })
         .state("seasonStanding.qualifyDetails", {
-            templateUrl: "view/qualifyDetails.html"
+            templateUrl: "view/qualifyDetails.html",
+            controller: "QualifyDetailsController"
         })
 
     .state("driverStanding", {
@@ -56,6 +62,7 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
         templateUrl: "view/driverStanding.html",
         controller: "DriverStandingController"
     })
+
     .state("constructorStanding", {
         url: '/constructorStanding',
         templateUrl: "view/constructorStanding.html",
