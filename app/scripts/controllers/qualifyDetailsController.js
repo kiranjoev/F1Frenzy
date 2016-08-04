@@ -1,12 +1,15 @@
 'use strict';
 
-angular.module('app.controllers').controller('QualifyDetailsController', ['$scope', 'SeasonService', function ($scope, SeasonService) {
+angular.module('app.controllers').controller('QualifyDetailsController', ['$scope', 'SeasonService', '$stateParams', function ($scope, SeasonService, $stateParams) {
 
-    $scope.raceDetails = [];
+    $scope.qualifyDetails = [];
+    $scope.selectedSeason = $stateParams.season;
+    $scope.selecteRaceName = $stateParams.raceName;
+    $scope.selectedRaceId = $stateParams.raceId;
 
     $scope.loadQualifyingDetails = function () {
         $scope.common.displayLoading = true;
-        SeasonService.getQualifyingDetails($scope.common.selectedSeason.season, $scope.common.selectedRace.round).then(function (response) {
+        SeasonService.getQualifyingDetails($scope.selectedSeason, $scope.selectedRaceId).then(function (response) {
             console.log(response);
             $scope.qualifyDetails = response.data.MRData.RaceTable.Races[0].QualifyingResults;
             $scope.common.displayLoading = false;

@@ -45,16 +45,34 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
             controller: "SeasonStandingController"
         })
         .state("seasonStanding.raceDetails", {
+            //url: "/seasonStanding/:season/:raceId/:raceName/raceDetails",
             templateUrl: "view/raceDetails.html",
-            controller: "RaceDetailsController"
+            controller: "RaceDetailsController",
+            params: {
+                season: null,
+                raceId: null,
+                raceName: null
+            }
         })
         .state("seasonStanding.pitDetails", {
+            //url: "/seasonStanding/:season/:raceId/:raceName/pitDetails",
             templateUrl: "view/pitDetails.html",
-            controller: "PitDetailsController"
+            controller: "PitDetailsController",
+            params: {
+                season: null,
+                raceId: null,
+                raceName: null
+            }
         })
         .state("seasonStanding.qualifyDetails", {
+            //url: "/seasonStanding/:season/:raceId/:raceName/qualifyDetails",
             templateUrl: "view/qualifyDetails.html",
-            controller: "QualifyDetailsController"
+            controller: "QualifyDetailsController",
+            params: {
+                season: null,
+                raceId: null,
+                raceName: null
+            }
         })
 
     .state("driverStanding", {

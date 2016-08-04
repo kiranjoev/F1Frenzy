@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers').controller('SeasonStandingController', ['$scope', 'SeasonService', 'ScheduleService','$state', function ($scope, SeasonService, ScheduleService, $state) {
+angular.module('app.controllers').controller('SeasonStandingController', ['$scope', 'SeasonService', 'ScheduleService', '$state', function ($scope, SeasonService, ScheduleService, $state) {
 
     $scope.displayRaceDetails = true;
     $scope.displayPitDetails = true;
@@ -10,40 +10,24 @@ angular.module('app.controllers').controller('SeasonStandingController', ['$scop
     $scope.common = {};
     $scope.common.displayLoading = false;
 
-    $scope.changeSeason = function (selectedSeason) {
-        if (Math.floor(selectedSeason) < 2003) {
-            $scope.displayPitDetails = false;
-            $scope.displayQualifyingDetails = false;
-        } else if (Math.floor(selectedSeason) < 2012) {
-            $scope.displayPitDetails = false;
-        }
-        $scope.common.selectedSeason = selectedSeason;
-        $scope.loadRaceList();
-    }
-
-    $scope.changeRace = function (selectedRace) {
-        $scope.common.selectedRace = selectedRace;
-    }
-
     $scope.loadSeasonList = function () {
         $scope.common.displayLoading = true;
         SeasonService.getSeasonDetails().then(function (response) {
             console.log(response);
             $scope.seasonList = response.data.MRData.SeasonTable.Seasons;
             $scope.seasonList.reverse();
-            $scope.common.selectedSeason = $scope.seasonList[0];
+            $scope.selectedSeason = $scope.seasonList[0].season;
             $scope.loadRaceList();
         }, function (error) {
             console.log(error);
             $scope.common.displayLoading = false;
         });
     }
-    $scope.loadSeasonList();
 
     $scope.loadRaceList = function () {
         var sampleRaceList = [];
         $scope.common.displayLoading = true;
-        ScheduleService.getScheduleDetails($scope.common.selectedSeason.season).then(function (response) {
+        ScheduleService.getScheduleDetails($scope.selectedSeason).then(function (response) {
             console.log(response);
             for (var index in response.data.MRData.RaceTable.Races) {
                 sampleRaceList.push({
@@ -52,16 +36,42 @@ angular.module('app.controllers').controller('SeasonStandingController', ['$scop
                 });
             }
             $scope.raceList = sampleRaceList;
-            $scope.common.selectedRace = $scope.raceList[0];
+            $scope.selectedRace = $scope.raceList[0];
             $scope.common.displayLoading = false;
+            $state.go('seasonStanding.raceDetails', ({
+                season: $scope.selectedSeason,
+                raceId: $scope.selectedRace.round,
+                raceName: $scope.selectedRace.name
+            }));
         }, function (error) {
             console.log(error);
             $scope.common.displayLoading = false;
         });
     }
 
-    $scope.updateFilter = function () {
-        $state.go('seasonStanding.raceDetails');
+    $scope.changeSeason = function (selectedSeason) {
+        if (Math.floor(selectedSeason) < 2003) {
+            $scope.displayPitDetails = false;
+            $scope.displayQualifyingDetails = false;
+        } else if (Math.floor(selectedSeason) < 2012) {
+            $scope.displayPitDetails = false;
+        } else {
+            $scope.displayRaceDetails = true;
+            $scope.displayPitDetails = true;
+            $scope.displayQualifyingDetails = true;
+        }
+        $scope.selectedSeason = selectedSeason;
+        $scope.loadRaceList();
     }
+
+    $scope.changeRace = function (selectedRace) {
+        $scope.selectedRace = selectedRace;
+        $state.go('seasonStanding.raceDetails', ({
+            season: $scope.selectedSeason,
+            raceId: $scope.selectedRace.round,
+            raceName: $scope.selectedRace.name
+        }));
+    }
+    $scope.loadSeasonList();
 
 }]);

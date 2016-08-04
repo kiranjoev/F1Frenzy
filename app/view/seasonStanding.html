@@ -13,13 +13,13 @@
                 <div uib-dropdown class="dropDownWrapper" on-toggle="isSeasonOpen = !isSeasonOpen">
                     <div uib-dropdown-toggle>
                         <div class="dropDownValue">
-                            {{common.selectedSeason.season}}
+                            {{selectedSeason}}
                         </div>
                         <span ng-hide="isSeasonOpen" class="glyphicon glyphicon-chevron-down" style="float:right"></span>
                         <span ng-show="isSeasonOpen" class="glyphicon glyphicon-chevron-up" style="float:right"></span>
                     </div>
                     <ul class="dropdownList" uib-dropdown-menu>
-                        <li ng-repeat="season in seasonList" ng-click="changeSeason(season)">{{season.season}}</li>
+                        <li ng-repeat="season in seasonList" ng-click="changeSeason(season.season)">{{season.season}}</li>
                     </ul>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div uib-dropdown class="dropDownWrapper" on-toggle="isRaceOpen = !isRaceOpen">
                     <div uib-dropdown-toggle>
                         <div class="dropDownValue">
-                            {{common.selectedRace.name}}
+                            {{selectedRace.name}}
                         </div>
                         <span ng-hide="isRaceOpen" class="glyphicon glyphicon-chevron-down" style="float:right"></span>
                         <span ng-show="isRaceOpen" class="glyphicon glyphicon-chevron-up" style="float:right"></span>
@@ -37,19 +37,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2 pull-right">
-                <button type="button" class="button button-primary" ng-click="updateFilter()">Update Filter</button>
-            </div>
         </div>
         <div class="row">
-            {{common.selectedSeason.season}} {{common.selectedRace.name}}
+            {{selectedSeason}} {{selectedRace.name}}
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-3">
                 <ul>
-                    <li ng-if="displayRaceDetails"><a ui-sref="seasonStanding.raceDetails({season : selectedSeason.season, raceId:selectedRace.round})">Race Details</a></li>
-                    <li ng-if="displayPitDetails"><a ui-sref="seasonStanding.pitDetails">Pit Stop Summary</a></li>
-                    <li ng-if="displayQualifyingDetails"><a ui-sref="seasonStanding.qualifyDetails">Qualifying</a></li>
+                    <li ng-if="displayRaceDetails"><a ui-sref="seasonStanding.raceDetails({season : selectedSeason, raceId:selectedRace.round,raceName:selectedRace.name})">Race Details</a></li>
+                    <li ng-if="displayPitDetails"><a ui-sref="seasonStanding.pitDetails({season : selectedSeason, raceId:selectedRace.round,raceName:selectedRace.name})">Pit Stop Summary</a></li>
+                    <li ng-if="displayQualifyingDetails"><a ui-sref="seasonStanding.qualifyDetails({season : selectedSeason, raceId:selectedRace.round,raceName:selectedRace.name})">Qualifying</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-md-9">
