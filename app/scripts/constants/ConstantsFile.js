@@ -1,38 +1,204 @@
 'use strict';
 
-angular.module('app.constants',[]).constant('APP_CONSTANTS',{
-   "season" : 
-        [{id: 1, year: '2016'},
-        {id: 2, year: '2015'},
-        {id: 3, year: '2014'},
-        {id: 4, year: '2013'},
-        {id: 5, year: '2012'},
-        {id: 6, year: '2011'},
-        {id: 7, year: '2010'},
-        {id: 8, year: '2009'},
-        {id: 9, year: '2008'},
-        {id: 10, year: '2007'},
-        {id: 11, year: '2006'},
-        {id: 12, year: '2005'},
-        {id: 13, year: '2004'},
-        {id: 14, year: '2003'},
-        {id: 15, year: '2002'},
-        {id: 16, year: '2001'},
-        {id: 17, year: '2000'},
-        {id: 18, year: '1999'},
-        {id: 19, year: '1998'},
-        {id: 20, year: '1997'},
-        {id: 21, year: '1996'},
-        {id: 22, year: '1995'},
-        {id: 23, year: '1994'},
-        {id: 24, year: '1993'},
-        {id: 25, year: '1992'},
-        {id: 26, year: '1991'},
-        {id: 27, year: '1990'},
-        {id: 28, year: '1989'},
-        {id: 29, year: '1988'},
-        {id: 30, year: '1987'},
-        {id: 31, year: '1986'},
-        {id: 32, year: '1985'},
-        {id: 33, year: '1984'},]
+angular.module('app.constants', []).constant('APP_CONSTANTS', {
+    "hcChartTheme": {
+        colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+      "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+        chart: {
+            backgroundColor: {
+                linearGradient: {
+                    x1: 0,
+                    y1: 0,
+                    x2: 1,
+                    y2: 1
+                },
+                stops: [
+            [0, '#2a2a2b'],
+            [1, '#3e3e40']
+         ]
+            },
+            plotBorderColor: '#606063'
+        },
+        title: {
+            style: {
+                color: '#E0E0E3',
+                textTransform: 'uppercase',
+                fontSize: '20px'
+            }
+        },
+        subtitle: {
+            style: {
+                color: '#E0E0E3',
+                textTransform: 'uppercase'
+            }
+        },
+        xAxis: {
+            gridLineColor: '#707073',
+            labels: {
+                style: {
+                    color: '#E0E0E3'
+                }
+            },
+            lineColor: '#707073',
+            minorGridLineColor: '#505053',
+            tickColor: '#707073',
+            title: {
+                style: {
+                    color: '#A0A0A3'
+
+                }
+            }
+        },
+        yAxis: {
+            gridLineColor: '#707073',
+            labels: {
+                style: {
+                    color: '#E0E0E3'
+                }
+            },
+            lineColor: '#707073',
+            minorGridLineColor: '#505053',
+            tickColor: '#707073',
+            tickWidth: 1,
+            title: {
+                style: {
+                    color: '#A0A0A3'
+                }
+            }
+        },
+        tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            style: {
+                color: '#F0F0F0'
+            }
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    color: '#B0B0B3'
+                },
+                marker: {
+                    lineColor: '#333'
+                }
+            },
+            boxplot: {
+                fillColor: '#505053'
+            },
+            candlestick: {
+                lineColor: 'white'
+            },
+            errorbar: {
+                color: 'white'
+            }
+        },
+        legend: {
+            itemStyle: {
+                color: '#E0E0E3'
+            },
+            itemHoverStyle: {
+                color: '#FFF'
+            },
+            itemHiddenStyle: {
+                color: '#606063'
+            }
+        },
+        credits: {
+            style: {
+                color: '#666'
+            }
+        },
+        labels: {
+            style: {
+                color: '#707073'
+            }
+        },
+
+        drilldown: {
+            activeAxisLabelStyle: {
+                color: '#F0F0F3'
+            },
+            activeDataLabelStyle: {
+                color: '#F0F0F3'
+            }
+        },
+
+        navigation: {
+            buttonOptions: {
+                symbolStroke: '#DDDDDD',
+                theme: {
+                    fill: '#505053'
+                }
+            }
+        },
+
+        // scroll charts
+        rangeSelector: {
+            buttonTheme: {
+                fill: '#505053',
+                stroke: '#000000',
+                style: {
+                    color: '#CCC'
+                },
+                states: {
+                    hover: {
+                        fill: '#707073',
+                        stroke: '#000000',
+                        style: {
+                            color: 'white'
+                        }
+                    },
+                    select: {
+                        fill: '#000003',
+                        stroke: '#000000',
+                        style: {
+                            color: 'white'
+                        }
+                    }
+                }
+            },
+            inputBoxBorderColor: '#505053',
+            inputStyle: {
+                backgroundColor: '#333',
+                color: 'silver'
+            },
+            labelStyle: {
+                color: 'silver'
+            }
+        },
+
+        navigator: {
+            handles: {
+                backgroundColor: '#666',
+                borderColor: '#AAA'
+            },
+            outlineColor: '#CCC',
+            maskFill: 'rgba(255,255,255,0.1)',
+            series: {
+                color: '#7798BF',
+                lineColor: '#A6C7ED'
+            },
+            xAxis: {
+                gridLineColor: '#505053'
+            }
+        },
+
+        scrollbar: {
+            barBackgroundColor: '#808083',
+            barBorderColor: '#808083',
+            buttonArrowColor: '#CCC',
+            buttonBackgroundColor: '#606063',
+            buttonBorderColor: '#606063',
+            rifleColor: '#FFF',
+            trackBackgroundColor: '#404043',
+            trackBorderColor: '#404043'
+        },
+
+        // special colors for some of the
+        legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+        background2: '#505053',
+        dataLabelsColor: '#B0B0B3',
+        textColor: '#C0C0C0',
+        contrastTextColor: '#F0F0F3',
+        maskColor: 'rgba(255,255,255,0.3)'
+    }
 });

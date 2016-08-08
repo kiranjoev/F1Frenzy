@@ -22,7 +22,7 @@ angular.module('f1App').config(['$locationProvider', '$stateProvider', '$urlRout
     })
 
     .state("driverInfo", {
-        url: ':driverId/driverInfo',
+        url: '/:driverId/driverInfo',
         templateUrl: "view/driverInfo.html",
         controller: "DriverInfoController"
     })

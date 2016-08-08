@@ -8,5 +8,6 @@ angular.module('f1App', [
     'ui.router',
     'app.controllers',
     'app.services',
-    'app.constants'
+    'app.constants',
+    'app.directives'
 ]);
