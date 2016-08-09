@@ -1,4 +1,4 @@
-<div ng-include="'view/header.html'"></div>
+<div ng-include="'app/view/header.html'"></div>
 <section class="segment">
     <div class="row text-center">
             <h1>Constructor Standings</h1>
@@ -58,7 +58,7 @@
                                 <tbody>
                                     <tr ng-repeat="car in constructorStandings">
                                         <td>{{$index + 1}}</td>
-                                        <td><img ng-src="img/flags/{{car.Constructor.nationality}}.png" /> {{car.Constructor.name}}</td>
+                                        <td><img ng-src="app/img/flags/{{car.Constructor.nationality}}.png" /> {{car.Constructor.name}}</td>
                                         <td>{{car.points}}</td>
                                         <td>{{car.wins}}</td>
                                     </tr>
@@ -78,7 +78,7 @@
                             <tbody>
                                 <tr ng-repeat="car in constructorResults">
                                     <td>{{car.raceName}}</td>
-                                    <td><img ng-src="img/flags/{{car.Results[0].Constructor.nationality}}.png" /> {{car.Results[0].Constructor.name}}</td>
+                                    <td><img ng-src="app/img/flags/{{car.Results[0].Constructor.nationality}}.png" /> {{car.Results[0].Constructor.name}}</td>
                                     <td>{{car.points}}</td>
                                 </tr>
                             </tbody>
