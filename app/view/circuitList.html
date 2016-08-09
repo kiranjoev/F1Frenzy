@@ -1,4 +1,4 @@
-<div ng-include="'view/header.html'"></div>
+<div ng-include="'app/view/header.html'"></div>
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -20,7 +20,7 @@
                                 <tr ng-repeat="circuit in circuitList">
                                     <td>{{$index + 1}}</td>
                                     <td>
-                                        <img ng-src="img/flags/{{circuit.Location.country}}.png" /> {{circuit.circuitName}}
+                                        <img ng-src="app/img/flags/{{circuit.Location.country}}.png" /> {{circuit.circuitName}}
                                     </td>
                                     <td>{{circuit.Location.locality}},&nbsp;{{circuit.Location.country}}</td>
                                 </tr>
