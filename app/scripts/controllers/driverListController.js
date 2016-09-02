@@ -14,11 +14,14 @@ angular.module('app.controllers').controller('DriverListController', ['$scope', 
     }*/
 
     $scope.loadDriverList = function () {
+        $scope.displayLoading = true;
         DriverService.getDriverList('current').then(function (response) {
             console.log(response);
             $scope.driverList = response.data.MRData.DriverTable.Drivers;
+            $scope.displayLoading = false;
         }, function (error) {
             console.log(error);
+            $scope.displayLoading = false;
         });
     }
 

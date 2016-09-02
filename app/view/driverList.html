@@ -11,7 +11,7 @@
                         <!--<img ng-src="{{news.thumbnail}}">-->
                         <div class="content-wrap">
                             <p>{{driver.permanentNumber}}</p>
-                            <h5>{{driver.givenName}}&nbsp;{{driver.familyName}}</h5>
+                            <a ui-sref="driverInfo({'driverId':driver.driverId})"><h5>{{driver.givenName}}&nbsp;{{driver.familyName}}</h5></a>
                             <!--<p>{{}}</p>-->
                         </div>
                     </div>
@@ -20,3 +20,9 @@
         </div>
     </div>
 </section>
+<div class="spinner-overlay" ng-show="displayLoading">
+    <div class="spinner-area">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
