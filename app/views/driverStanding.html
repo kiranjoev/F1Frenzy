@@ -1,0 +1,106 @@
+<div ng-include="'views/header.html'"></div>
+<section class="segment">
+    <div class="row text-center">
+            <h1>Driver Standings</h1>
+        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div uib-dropdown class="dropDownWrapper" on-toggle="isSeasonOpen = !isSeasonOpen">
+                    <div uib-dropdown-toggle>
+                        <div class="dropDownValue">
+                            {{selectedSeason}}
+                        </div>
+                        <span ng-hide="isSeasonOpen" class="glyphicon glyphicon-chevron-down" style="float:right"></span>
+                        <span ng-show="isSeasonOpen" class="glyphicon glyphicon-chevron-up" style="float:right"></span>
+                    </div>
+                    <ul class="dropdownList" uib-dropdown-menu>
+                        <li ng-repeat="season in seasonList" ng-click="changeSeason(season.season)">{{season.season}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div uib-dropdown class="dropDownWrapper" on-toggle="isDriverOpen = !isDriverOpen">
+                    <div uib-dropdown-toggle>
+                        <div class="dropDownValue">
+                            {{selectedDriver.givenName}}&nbsp;{{selectedDriver.familyName}}
+                        </div>
+                        <span ng-hide="isDriverOpen" class="glyphicon glyphicon-chevron-down" style="float:right"></span>
+                        <span ng-show="isDriverOpen" class="glyphicon glyphicon-chevron-up" style="float:right"></span>
+                    </div>
+                    <ul class="dropdownList" uib-dropdown-menu>
+                        <li ng-repeat="driver in driverList" ng-click="changeDriver(driver)">{{driver.givenName}}&nbsp;{{driver.familyName}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 pull-right">
+                <button type="button" class="button button-primary" ng-click="updateFilter()">Update Filter</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="well">
+                    <div class="row" ng-show="displayDriverStandings">
+                        <div class="table-responsive body-font">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Driver Name</th>
+                                        <th>Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="driver in driverStandings">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}</td>
+                                        <td>{{driver.points}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="displayDriverStandings">
+                        <div class="table-responsive body-font">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Race Name</th>
+                                        <th>Driver Name</th>
+                                        <th>Position</th>
+                                        <th>Constructor</th>
+                                        <th>Laps</th>
+                                        <th>Grid</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="driver in driverResults">
+                                        <td>{{driver.raceName}}</td>
+                                        <td>{{driver.Results[0].Driver.givenName}}&nbsp;{{driver.Results[0].Driver.familyName}}</td>
+                                        <td>{{driver.Results[0].position}}</td>
+                                        <td>{{driver.Results[0].Constructor.name}}</td>
+                                        <td>{{driver.Results[0].laps}}</td>
+                                        <td>{{driver.Results[0].grid}}</td>
+                                        <td>{{driver.Results[0].Time.time}}</td>
+                                        <td>{{driver.Results[0].status}}</td>
+                                        <td>{{driver.Results[0].points}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="spinner-overlay" ng-show="displayLoading">
+    <div class="spinner-area">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
