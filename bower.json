@@ -24,7 +24,6 @@
         "angular-mocks": "^1.4.0"
     },
     "appPath": "app",
-    "moduleName": "angularExp2App",
     "overrides": {
         "bootstrap": {
             "main": [
