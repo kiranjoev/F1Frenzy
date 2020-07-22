@@ -5,7 +5,7 @@ angular.module('app.services').factory('ResultService',['$http',function($http){
     resultDetails.getResultDetails = function (){
         return $http({
             method : 'JSONP',
-            url : 'http://ergast.com/api/f1/current/last/results.json?callback=JSON_CALLBACK'
+            url : '//ergast.com/api/f1/current/last/results.json?callback=JSON_CALLBACK'
         });
     }
     
