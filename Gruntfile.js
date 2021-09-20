@@ -16,7 +16,6 @@ module.exports = function (grunt) {
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
         ngtemplates: 'grunt-angular-templates',
-        cdnify: 'grunt-google-cdn'
     });
 
     // Configurable paths for the application
@@ -350,19 +349,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // ng-annotate tries to make the code safe for minification automatically
-        // by using the Angular long form for dependency injection.
-        ngAnnotate: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '.tmp/concat/scripts',
-                    src: '*.js',
-                    dest: '.tmp/concat/scripts'
-                }]
-            }
-        },
-
         // Replace Google CDN references
         cdnify: {
             dist: {
@@ -466,7 +452,6 @@ module.exports = function (grunt) {
         'postcss',
         'ngtemplates',
         'concat',
-        'ngAnnotate',
         'copy:dist',
         'cdnify',
         'cssmin',
